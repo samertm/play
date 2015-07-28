@@ -1,0 +1,32 @@
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p>welcome to github streaks yoooo</p>
+      {% if user.Login != "" %}
+      <p>Welcome, {{ sayhi(user) }}</p>
+      <p>SAMER: turn this into the dashboard page.</p>
+      {% if user.Email == "" %}
+      <p>Plz give me ur email. :3 meow</p>
+      <form method="post" action="/save_email">
+        <input name="email">
+        <button class="btn btn-md btn-success">Register!</button>
+      </form>
+      {% else %}
+      <p>YAY YOUR EMAIL IS {{ user.Email }}.</p>
+      <p>
+        <form method="post" action="/create_group">
+          <button class="btn btn-md btn-success">Create Group</button>
+        </form>
+      </p>
+      {% endif %}{# if needEmail #}
+      {% for group in user.Groups %}
+      <p><a href="placeholder">Group {{ group.ID }}</a></p>
+      {% endfor %}
+      {% endif %}{# if user.Login != "" #}
+      <p>Login with <a href="/login">GitHub</a>.</p>
+      {{end}}
+    </div>
+  </div>
+</div>
+{% endblock %}
